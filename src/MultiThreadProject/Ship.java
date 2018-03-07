@@ -5,6 +5,7 @@
  */
 package MultiThreadProject;
 
+import java.util.concurrent.locks.ReentrantLock;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -14,7 +15,9 @@ import java.util.logging.Logger;
  */
 public class Ship extends Thread
 {
+    Thread thread;
     int id;
+    ReentrantLock lock = new ReentrantLock();
   public  double finishTime, startTime;
     Ship(int _id) 
     {
@@ -24,6 +27,7 @@ public class Ship extends Thread
     public void run()
     {
        startTime= System.currentTimeMillis()*0.001;
+       lock.lock();
         try 
         {
             Thread.sleep((int)(Math.random()*1000));
@@ -31,6 +35,16 @@ public class Ship extends Thread
         {
             Logger.getLogger(Ship.class.getName()).log(Level.SEVERE, null, ex);
         }
+     lock.unlock();
+        
         finishTime= System.currentTimeMillis()*0.001;
     }
+
+    @Override
+    public synchronized void start() {
+        thread = new Thread(this);
+        super.start(); //To change body of generated methods, choose Tools | Templates.
+    }
+    
+    
 }
