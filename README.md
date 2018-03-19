@@ -1,5 +1,9 @@
 # OS-Spring-2018
 CSCI 470 Spring 2018  
 Multithread/Shared resource project is Main Branch  
-Used an old java project updated to use locks and synchronization
+    
+  
+Timing Memory Optimize Project (due Mar 19th)  
+
+https://github.com/Drygioni/OS-Spring-2018/tree/TimeMemoryOptimize
 
